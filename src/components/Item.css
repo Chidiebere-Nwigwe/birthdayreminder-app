@@ -1,0 +1,26 @@
+img{
+ float: left;
+ /* clear: left; */
+ border-radius: 50%;
+ width: 80px; /* Set a fixed width */
+ height: 80px; /* Set a fixed height */
+ border-radius: 50%; /* Make the image circular */
+ object-fit: cover; /* Ensure the image covers the area without distortion */
+ margin-left: 30px;
+ margin-right: 20px;
+}
+
+div{
+    padding: 10px;
+}
+h3{
+
+}
+div h3 span{
+    font-weight: lighter;
+    color: gray;
+}
+
+/* h3, p{
+    margin-right: 0px;
+} */

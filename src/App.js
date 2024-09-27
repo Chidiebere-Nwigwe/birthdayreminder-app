@@ -1,23 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import { useState } from "react";
+import "./App.css";
+import { Header } from "./components/Header";
+import { Item } from "./components/Item";
+import initialData from "./data";
+import { Button } from "./components/Button";
 
 function App() {
+  const [data, setData] = useState(initialData);
+  const [isCleared, setIsCleared] = useState(false); // to track when clear button is clicked
+
+  function handleClear() {
+    setData([]);
+    setIsCleared([true]); // lets me know page is cleared
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className={`App-header ${isCleared ? "cleared" : "default"}`}>
+        <Header data={data}>Birthdays Today</Header>
+        {data.map((person) => (
+          <Item
+            key={person.id}
+            name={person.name}
+            age={person.age}
+            image={person.image}
+          ></Item>
+        ))}
+
+        <Button onSelect={handleClear}>Clear All</Button>
+      </div>
     </div>
   );
 }
